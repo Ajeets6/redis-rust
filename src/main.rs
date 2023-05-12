@@ -4,16 +4,17 @@ use std::io::{Write,Read};
 
 fn handle_connection(mut _stream: TcpStream) {
   //...
-  let mut buf = [0; 512];
-  _stream.read(&mut buf).unwrap();
-  let data = b"+PONG\r\n";
-  _stream.write(data).unwrap();
-  
+  let mut buf = [0; 256];
+  loop{
+  let read=_stream.read(&mut buf).unwrap();
+  if read==0{break;}
+  _stream.write("+PONG\r\n".as_bytes()).unwrap();
+  }
 }
 
 fn main(){
     //You can use print statements as follows for debugging, they'll be visible when running tests.
-    //println!("Logs from your program will appear here!");
+    println!("Started");
 
     //Uncomment this block to pass the first stage
     
