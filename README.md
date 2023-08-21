@@ -1,1 +1,2 @@
-Make a redis like server in Rust
+## About the project
+Implementing a Redis like server in Rust
